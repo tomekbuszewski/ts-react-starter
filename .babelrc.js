@@ -1,4 +1,4 @@
-const isTest = String(process.env.NODE_ENV) === "testing";
+const isTest = String(process.env.NODE_ENV) === "test";
 
 module.exports = {
   plugins: [

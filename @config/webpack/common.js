@@ -15,6 +15,9 @@ const resolve = {
   extensions: [".ts", ".tsx", ".js", ".jsx"],
   alias: {
     "@config": path.resolve("@config"),
+    "@components": path.resolve("src", "components"),
+    "@decorators": path.resolve("src", "decorators"),
+    "@services": path.resolve("src", "services"),
   },
 };
 
