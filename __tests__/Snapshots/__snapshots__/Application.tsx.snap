@@ -20,6 +20,9 @@ Object {
           -
         </button>
       </p>
+      <div>
+        Loading...
+      </div>
     </div>
   </body>,
   "container": <div>
@@ -38,6 +41,9 @@ Object {
         -
       </button>
     </p>
+    <div>
+      Loading...
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

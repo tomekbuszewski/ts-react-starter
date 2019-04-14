@@ -10,6 +10,8 @@ module.exports = {
     "@babel/typescript",
     "@babel/preset-react",
     ["@babel/preset-env", {
+      useBuiltIns: "usage",
+      corejs: 3,
       modules: isTest ? "commonjs" : false,
     }],
   ],

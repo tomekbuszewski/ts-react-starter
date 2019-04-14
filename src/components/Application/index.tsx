@@ -6,6 +6,7 @@ import store from "@redux/store";
 
 import Paragraph from "../Paragraph";
 import Counter from "../Counter";
+import Async from "../AsyncComponent";
 
 class Application extends React.Component {
   public render(): React.ReactNode {
@@ -13,6 +14,7 @@ class Application extends React.Component {
       <Provider store={store}>
         <Paragraph>Hello</Paragraph>
         <Counter />
+        <Async />
       </Provider>
     );
   }
