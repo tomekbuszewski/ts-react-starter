@@ -1,16 +1,15 @@
-/* eslint-disable no-undef */
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
+import thunk from "redux-thunk";
 
 import reducers from "./reducers";
 
-export const makeStore = () => {
-  const enhancer = (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__();
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  return createStore(
-    reducers,
-    enhancer,
-  );
+export const makeStore = () => {
+  const enhancer = composeEnhancers(applyMiddleware(thunk));
+
+  return createStore(reducers, enhancer);
 };
 
 export default makeStore();

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { increaseCounter,decreaseCounter } from "@redux/counter/actions";
-import { Store } from "@redux/reducers";
+import { increaseCounter, decreaseCounter } from "@redux/counter/actions";
+import { IReduxStore } from "@redux/reducers";
 
 interface Props {
   inc: () => void;
@@ -20,11 +20,11 @@ class Counter extends React.Component<Props> {
           <button onClick={this.props.dec}>-</button>
         </p>
       </React.Fragment>
-    )
+    );
   }
 }
 
-const mapState = (state: Store) => ({
+const mapState = (state: IReduxStore) => ({
   counter: state.counter,
 });
 
@@ -33,4 +33,7 @@ const mapDispatch = {
   dec: decreaseCounter,
 };
 
-export default connect(mapState, mapDispatch)(Counter);
+export default connect(
+  mapState,
+  mapDispatch,
+)(Counter);
