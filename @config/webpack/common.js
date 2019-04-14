@@ -17,6 +17,7 @@ const resolve = {
     "@config": path.resolve("@config"),
     "@components": path.resolve("src", "components"),
     "@decorators": path.resolve("src", "decorators"),
+    "@redux": path.resolve("src", "redux"),
     "@services": path.resolve("src", "services"),
   },
 };

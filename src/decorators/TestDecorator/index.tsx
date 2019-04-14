@@ -6,15 +6,12 @@ export interface TestDecoratorProps {
 
 const withTestDecorator = <P extends TestDecoratorProps>(
   Component: React.ComponentType<P>,
-) =>
-  class TestDecorator extends React.Component {
-    private sayHello = () => {
-      console.log("Hello");
-    };
-
-    public render() {
-      return <Component {...this.props as P} sayHello={this.sayHello} />;
-    }
+): React.FunctionComponent<any> => (props: TestDecoratorProps) => {
+  const sayHello = () => {
+    console.log("hello");
   };
+
+  return <Component {...props as P} sayHello={sayHello} />;
+};
 
 export default withTestDecorator;

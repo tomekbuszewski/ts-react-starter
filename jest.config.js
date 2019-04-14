@@ -7,6 +7,7 @@ module.exports = {
     "@config/(.*)$": "<rootDir>/@config/$1",
     "@components/(.*)$": "<rootDir>/src/components/$1",
     "@decorators/(.*)$": "<rootDir>/src/decorators/$1",
+    "@redux/(.*)$": "<rootDir>/src/redux/$1",
     "@services/(.*)$": "<rootDir>/src/services/$1",
   },
 };

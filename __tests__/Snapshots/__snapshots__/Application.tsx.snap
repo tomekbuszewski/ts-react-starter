@@ -8,11 +8,35 @@ Object {
       <p>
         Hello
       </p>
+      <p>
+        Counter state: 
+        0
+      </p>
+      <p>
+        <button>
+          +
+        </button>
+        <button>
+          -
+        </button>
+      </p>
     </div>
   </body>,
   "container": <div>
     <p>
       Hello
+    </p>
+    <p>
+      Counter state: 
+      0
+    </p>
+    <p>
+      <button>
+        +
+      </button>
+      <button>
+        -
+      </button>
     </p>
   </div>,
   "debug": [Function],

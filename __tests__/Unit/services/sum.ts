@@ -9,13 +9,13 @@ describe("`Sum` service tests", () => {
     expect(() => {
       // @ts-ignore
       sum();
-    }).toThrowError("Both arguments needs to be provided!");
+    }).toThrow("Both arguments needs to be provided!");
   });
 
   it("should throw an error when parameters have wrong type", () => {
     expect(() => {
       // @ts-ignore – I am disabling this to test erroneous execution
       sum("a", "b");
-    }).toThrowError("Both arguments has to be numbers");
+    }).toThrow("Both arguments has to be numbers");
   });
 });
