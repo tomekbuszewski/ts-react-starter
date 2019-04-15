@@ -19,14 +19,13 @@ const resolve = {
     "@decorators": path.resolve("src", "decorators"),
     "@redux": path.resolve("src", "redux"),
     "@services": path.resolve("src", "services"),
+    __mocks__: path.resolve("__mocks__"),
   },
 };
 
-const entry = [
-  "./src/index.tsx",
-];
+const entry = ["./src/index.tsx"];
 
-const output = (isProd) => ({
+const output = isProd => ({
   path: path.resolve("public", "assets"),
   filename: isProd ? "[name].[hash].js" : "[name].js",
   hotUpdateChunkFilename: ".hot/[id].[hash].hot-update.js",
@@ -46,7 +45,7 @@ const rules = [
   },
 ];
 
-const optimization = (isProd) => ({
+const optimization = isProd => ({
   minimize: isProd,
   nodeEnv: isProd ? "production" : "development",
   mergeDuplicateChunks: true,

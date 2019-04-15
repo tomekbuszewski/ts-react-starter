@@ -17,12 +17,11 @@
       "@components/*": ["./components/*"],
       "@decorators/*": ["./decorators/*"],
       "@redux/*": ["./redux/*"],
-      "@services/*": ["./services/*"]
+      "@services/*": ["./services/*"],
+      "__mocks__/*": ["./../__mocks__/*"]
     }
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "build",

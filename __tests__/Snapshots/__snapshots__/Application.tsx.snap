@@ -8,18 +8,11 @@ Object {
       <p>
         Hello
       </p>
-      <p>
-        Counter state: 
-        0
-      </p>
-      <p>
-        <button>
-          +
-        </button>
-        <button>
-          -
-        </button>
-      </p>
+      <div
+        data-testid="state-loading"
+      >
+        Loading users...
+      </div>
       <div>
         Loading...
       </div>
@@ -29,18 +22,11 @@ Object {
     <p>
       Hello
     </p>
-    <p>
-      Counter state: 
-      0
-    </p>
-    <p>
-      <button>
-        +
-      </button>
-      <button>
-        -
-      </button>
-    </p>
+    <div
+      data-testid="state-loading"
+    >
+      Loading users...
+    </div>
     <div>
       Loading...
     </div>

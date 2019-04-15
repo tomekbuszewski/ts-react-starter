@@ -5,17 +5,10 @@ import { ReduxThunkDispatch } from "@redux/types";
 
 import { makeStore } from "@redux/store";
 import { getUsers } from "@redux/users/actions";
-
-/**
- * When there are more async actions to test,
- * move this to global
- */
-const defaultAnswer = {
-  statusText: "",
-  config: {},
-  options: {},
-  headers: {},
-};
+import {
+  mockedAxios,
+  defaultAxiosAnswer as defaultAnswer,
+} from "__mocks__/axiosMock";
 
 const successMockData = {
   ...defaultAnswer,
@@ -43,7 +36,6 @@ const failMockData = {
 };
 
 jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe("Redux `users` tests", () => {
   let store: Store;

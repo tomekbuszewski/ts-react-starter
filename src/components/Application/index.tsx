@@ -5,15 +5,15 @@ import { Provider } from "react-redux";
 import store from "@redux/store";
 
 import Paragraph from "../Paragraph";
-import Counter from "../Counter";
 import Async from "../AsyncComponent";
+import Users from "../Users";
 
 class Application extends React.Component {
   public render(): React.ReactNode {
     return (
       <Provider store={store}>
         <Paragraph>Hello</Paragraph>
-        <Counter />
+        <Users />
         <Async />
       </Provider>
     );
