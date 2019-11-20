@@ -14,9 +14,13 @@
     "target": "esnext",
     "paths": {
       "@config/*": ["./../@config/*"],
+      "@components": ["./components"],
       "@components/*": ["./components/*"],
+      "@decorators": ["./decorators"],
       "@decorators/*": ["./decorators/*"],
+      "@redux": ["./redux"],
       "@redux/*": ["./redux/*"],
+      "@services": ["./services"],
       "@services/*": ["./services/*"],
       "__mocks__/*": ["./../__mocks__/*"]
     }

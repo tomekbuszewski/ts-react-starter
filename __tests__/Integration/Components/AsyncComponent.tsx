@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render, waitForElement } from "react-testing-library";
-import AsyncComponent from "@components/AsyncComponent";
+import { AsyncComponent } from "@components";
 
 jest.mock("axios", () => ({
   get: jest.fn(() =>
