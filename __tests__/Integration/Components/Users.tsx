@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Store } from "redux";
-import { render, waitForElement } from "react-testing-library";
-import { Provider } from "react-redux";
+import { waitForElement, render } from "@testing-library/react";
 
 import { makeStore } from "@redux/store";
-import Users from "@components/Users";
+import { Users, UsersComponent } from "@components";
 
 import {
   mockedAxios,
@@ -39,6 +38,12 @@ const failMockData = {
   data: {},
 };
 
+const componentConfig = {
+  state: null,
+  users: [],
+  get: async () => Promise.resolve(),
+};
+
 jest.mock("axios");
 
 describe("Integration `UsersComponent` tests", () => {
@@ -47,35 +52,37 @@ describe("Integration `UsersComponent` tests", () => {
   });
 
   it("should have empty state on mount", () => {
-    const component = renderWithRedux(<Users />, store);
+    const component = render(<UsersComponent {...componentConfig} />);
 
     expect(component.container.innerHTML).toBe(
       `<div data-testid="state-loading">Loading users...</div>`,
     );
-    expect(component).toMatchSnapshot();
   });
 
   it("should display users on success", async () => {
-    mockedAxios.get.mockResolvedValue({ ...successMockData });
-
-    const component = renderWithRedux(<Users />, store);
+    const component = render(
+      <UsersComponent
+        {...componentConfig}
+        state={successMockData.status}
+        users={successMockData.data}
+      />,
+    );
     const mountedNode = await waitForElement(() =>
       component.getByTestId("state-success"),
     );
 
     expect(mountedNode.innerHTML).toBe("<li>One One</li><li>Two Two</li>");
-    // expect(component).toMatchSnapshot();
   });
 
   it("should display error message on failure", async () => {
-    mockedAxios.get.mockResolvedValueOnce({ ...failMockData });
-
-    const component = renderWithRedux(<Users />, store);
+    const component = renderWithRedux(
+      <UsersComponent {...componentConfig} state={500} />,
+      store,
+    );
     const mountedNode = await waitForElement(() =>
       component.getByTestId("state-error"),
     );
 
     expect(mountedNode.innerHTML).toBe("Error");
-    // expect(component).toMatchSnapshot();
   });
 });

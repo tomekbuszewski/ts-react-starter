@@ -38,9 +38,7 @@ export const UsersComponent = (props: Props) => {
   );
 };
 
-const mapState = (state: IReduxStore) => ({
-  ...state.users,
-});
+const mapState = (state: IReduxStore) => state.users;
 
 const mapDispatch = {
   get: getUsers,

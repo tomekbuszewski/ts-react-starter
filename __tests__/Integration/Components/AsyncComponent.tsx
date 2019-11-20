@@ -1,5 +1,5 @@
 import * as React from "react";
-import { render, waitForElement } from "react-testing-library";
+import { render, waitForElement } from "@testing-library/react";
 import { AsyncComponent } from "@components";
 
 jest.mock("axios", () => ({
@@ -28,7 +28,6 @@ describe("Integration `AsyncComponent` tests", () => {
     const component = render(<AsyncComponent />);
 
     expect(component.container.innerHTML).toBe("<div>Loading...</div>");
-    expect(component).toMatchSnapshot();
   });
 
   it("should fetch data", async () => {
@@ -38,6 +37,5 @@ describe("Integration `AsyncComponent` tests", () => {
     );
 
     expect(todosNode.innerHTML).toBe("<li>one</li><li>two</li>");
-    expect(component).toMatchSnapshot();
   });
 });
