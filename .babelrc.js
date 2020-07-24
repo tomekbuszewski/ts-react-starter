@@ -5,14 +5,23 @@ module.exports = {
     ["@babel/plugin-proposal-decorators", { legacy: true }],
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
+    [
+      "remove-test-ids",
+      {
+        attributes: ["data-testid", "data-test-id"],
+      },
+    ],
   ],
   presets: [
     "@babel/typescript",
     "@babel/preset-react",
-    ["@babel/preset-env", {
-      useBuiltIns: "usage",
-      corejs: 3,
-      modules: isTest ? "commonjs" : false,
-    }],
+    [
+      "@babel/preset-env",
+      {
+        useBuiltIns: "usage",
+        corejs: 3,
+        modules: isTest ? "commonjs" : false,
+      },
+    ],
   ],
 };

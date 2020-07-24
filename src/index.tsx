@@ -1,8 +1,12 @@
-import * as React from "react";
+import React from "react";
 import { render } from "react-dom";
+import { Application } from "./containers/Application";
 
-import { Application } from "@components";
+const rootId = "#app";
+const root = document.querySelector(rootId);
 
-const root = document.querySelector("#app");
-
-render(<Application />, root);
+if (root) {
+  render(<Application />, root);
+} else {
+  console.error(`No element ${rootId} found in the document!`);
+}

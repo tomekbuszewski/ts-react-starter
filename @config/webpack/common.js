@@ -4,6 +4,9 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
+const Dotenv = require("dotenv-webpack");
+
+const getPaths = require("../moduleAlias");
 
 const PROD = process.env.NODE_ENV === "production";
 const ENV = PROD ? "production" : "development";
@@ -13,19 +16,12 @@ const devtool = PROD ? "none" : "inline-source-map";
 
 const resolve = {
   extensions: [".ts", ".tsx", ".js", ".jsx"],
-  alias: {
-    "@config": path.resolve("@config"),
-    "@components": path.resolve("src", "components"),
-    "@decorators": path.resolve("src", "decorators"),
-    "@redux": path.resolve("src", "redux"),
-    "@services": path.resolve("src", "services"),
-    __mocks__: path.resolve("__mocks__"),
-  },
+  alias: getPaths(),
 };
 
 const entry = ["./src/index.tsx"];
 
-const output = isProd => ({
+const output = (isProd) => ({
   path: path.resolve("public", "assets"),
   filename: isProd ? "[name].[hash].js" : "[name].js",
   hotUpdateChunkFilename: ".hot/[id].[hash].hot-update.js",
@@ -45,7 +41,7 @@ const rules = [
   },
 ];
 
-const optimization = isProd => ({
+const optimization = (isProd) => ({
   minimize: isProd,
   nodeEnv: isProd ? "production" : "development",
   mergeDuplicateChunks: true,
@@ -92,6 +88,8 @@ const plugins = [
   new ScriptExtHtmlWebpackPlugin({
     defaultAttribute: "async",
   }),
+
+  new Dotenv(),
 ];
 
 module.exports = {

@@ -1,16 +1,8 @@
 import { combineReducers } from "redux";
+import demoReducer from "./demoReducer/reducer";
 
-import counter, { ICounterReducer } from "./counter/reducer";
-import users, { IReduxUserReducer } from "./users/reducer";
-
-export interface IReduxStore {
-  counter: ICounterReducer;
-  users: IReduxUserReducer;
-}
-
-export const appReducers = {
-  counter,
-  users,
+export const reducers = {
+  demoReducer,
 };
 
-export default combineReducers(appReducers);
+export default combineReducers(reducers);

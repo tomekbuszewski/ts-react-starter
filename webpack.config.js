@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const dev = require("./@config/webpack/dev");
 const prod = require("./@config/webpack/prod");
 
