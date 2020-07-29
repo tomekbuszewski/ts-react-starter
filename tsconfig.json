@@ -17,6 +17,7 @@
       "@containers/*": ["./containers/*"],
       "@pages/*": ["./pages/*"],
       "@redux/*": ["./redux/*"],
+      "@services/*": ["./services/*"],
       "@typings": ["../@typings/index.d.ts"],
       "@ui/*": ["./ui/*"]
     }

@@ -9,7 +9,7 @@ module.exports = (mode = "babel", basePaths = false) => {
   const replaceMatrix = {
     jest: [
       ["/*", "/(.*)$"],
-      ["./", "<rootDir>/"],
+      ["./", "<rootDir>/src/"],
       ["/*", "/$1"],
       ["/*", "/$1"],
     ],
