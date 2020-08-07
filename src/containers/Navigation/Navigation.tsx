@@ -7,6 +7,7 @@ const Navigation: React.FunctionComponent = () => (
   <nav>
     <Link to={ROUTES.HOME}>Index</Link>
     <Link to={ROUTES.ABOUT}>About</Link>
+    <Link to={ROUTES.USERS}>Users (fetch)</Link>
   </nav>
 );
 

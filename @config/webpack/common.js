@@ -9,6 +9,7 @@ const Dotenv = require("dotenv-webpack");
 const getPaths = require("../moduleAlias");
 
 const PROD = process.env.NODE_ENV === "production";
+const MOCKS = Boolean(process.env.MOCKS);
 const ENV = PROD ? "production" : "development";
 
 const mode = PROD ? "production" : "development";
@@ -65,10 +66,18 @@ const optimization = (isProd) => ({
   },
 });
 
+console.log({
+  "process.env": {
+    NODE_ENV: JSON.stringify(ENV),
+    MOCKS: JSON.stringify(MOCKS),
+  },
+});
+
 const plugins = [
   new webpack.DefinePlugin({
     "process.env": {
       NODE_ENV: JSON.stringify(ENV),
+      MOCKS: JSON.stringify(MOCKS),
     },
   }),
 

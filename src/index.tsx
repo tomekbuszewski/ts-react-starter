@@ -1,9 +1,14 @@
 import React from "react";
 import { render } from "react-dom";
-import { Application } from "./containers/Application";
+import { Application } from "@containers/Application";
 
 const rootId = "#app";
 const root = document.querySelector(rootId);
+
+if (process.env.MOCKS) {
+  const { worker } = require("../mocks/browser");
+  worker.start();
+}
 
 if (root) {
   render(<Application />, root);

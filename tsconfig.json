@@ -15,6 +15,7 @@
     "paths": {
       "@config/*": ["../@config/*"],
       "@containers/*": ["./containers/*"],
+      "@mocks/*": ["../mocks/*"],
       "@pages/*": ["./pages/*"],
       "@redux/*": ["./redux/*"],
       "@services/*": ["./services/*"],
