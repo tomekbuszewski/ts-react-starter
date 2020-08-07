@@ -1,9 +1,7 @@
 import * as React from "react";
-import { PAGE_USERS_TESTING_IDS } from "@pages/Users/Users.typings";
+import { PAGE_USERS_TESTING_IDS, ViewProps } from "@pages/Users/Users.typings";
 
-const View: React.FunctionComponent<{
-  users: { name: string; id: number }[];
-}> = ({ users }) => {
+const View: React.FunctionComponent<ViewProps> = ({ users }) => {
   if (users.length > 0) {
     return (
       <ul data-testid={PAGE_USERS_TESTING_IDS.USERS_LIST}>

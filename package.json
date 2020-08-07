@@ -5,15 +5,17 @@
   "main": "public/index.ts",
   "scripts": {
     "~~~~~~ DEV COMMANDS ~~~~~~": "",
+    "clear-public": "rm -rf ./public/assets",
     "hmr": "npm run build:dev && NODE_ENV=development webpack-dev-server --hot",
     "hmr:mocks": "npm run build:dev && cross-env NODE_ENV=development MOCKS=true webpack-dev-server --hot",
     "plop": "plop",
     "postplop": "pretty-quick",
+    "serve:prod": "npm run build:prod; http-server ./public -p 9998 --cors",
     "storybook": "start-storybook -p 9001 -c ./@config/storybook",
     "test": "jest --coverage",
     "~~~~~~ BUILD COMMANDS ~~~~~~": "",
     "build:dev": "NODE_ENV=development webpack",
-    "build:prod": "NODE_ENV=production webpack --mode=production"
+    "build:prod": "npm run clear-public; NODE_ENV=production webpack --mode=production"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,7 @@
     "babel-plugin-remove-test-ids": "^1.1.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
+    "http-server": "^0.12.3",
     "ky": "^0.23.0",
     "ky-universal": "^0.8.1",
     "react": "^16.13.1",
