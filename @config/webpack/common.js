@@ -66,13 +66,6 @@ const optimization = (isProd) => ({
   },
 });
 
-console.log({
-  "process.env": {
-    NODE_ENV: JSON.stringify(ENV),
-    MOCKS: JSON.stringify(MOCKS),
-  },
-});
-
 const plugins = [
   new webpack.DefinePlugin({
     "process.env": {

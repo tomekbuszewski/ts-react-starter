@@ -106,8 +106,6 @@ module.exports = {
       return createNewReducer;
     }
 
-    console.log(reducer);
-
     return modifyReducer;
   },
 };
