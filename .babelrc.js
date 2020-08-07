@@ -9,10 +9,25 @@ module.exports = {
   presets: [
     "@babel/typescript",
     "@babel/preset-react",
-    ["@babel/preset-env", {
-      useBuiltIns: "usage",
-      corejs: 3,
-      modules: isTest ? "commonjs" : false,
-    }],
+    [
+      "@babel/preset-env",
+      {
+        useBuiltIns: "usage",
+        corejs: 3,
+        modules: isTest ? "commonjs" : false,
+      },
+    ],
   ],
+  env: {
+    production: {
+      plugins: [
+        [
+          "remove-test-ids",
+          {
+            attributes: ["data-testid", "data-test-id"],
+          },
+        ],
+      ],
+    },
+  },
 };

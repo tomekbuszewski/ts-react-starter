@@ -19,10 +19,9 @@ module.exports = {
   optimization: {
     ...common.optimization(false),
   },
-  plugins: [
-    ...common.plugins,
-  ],
+  plugins: [...common.plugins],
   devServer: {
     contentBase: path.join(__dirname, "..", "..", "public"),
+    port: process.env.HMR_PORT || "8888",
   },
 };

@@ -13,25 +13,29 @@
     "strict": true,
     "target": "esnext",
     "paths": {
-      "@config/*": ["./../@config/*"],
-      "@components": ["./components"],
-      "@components/*": ["./components/*"],
-      "@decorators": ["./decorators"],
-      "@decorators/*": ["./decorators/*"],
-      "@redux": ["./redux"],
+      "@config/*": ["../@config/*"],
+      "@containers/*": ["./containers/*"],
+      "@mocks/*": ["../mocks/*"],
+      "@pages/*": ["./pages/*"],
       "@redux/*": ["./redux/*"],
-      "@services": ["./services"],
       "@services/*": ["./services/*"],
-      "__mocks__/*": ["./../__mocks__/*"]
+      "@typings": ["../@typings/index.d.ts"],
+      "@ui/*": ["./ui/*"]
     }
   },
-  "include": ["src"],
+  "include": [
+    "./src/**/*",
+    "./*.js",
+    "./@config/**/*",
+    "./@typings",
+    "./tests/**/*",
+    "./mocks/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build",
     "scripts",
     "acceptance-tests",
-    "@config/webpack",
     "jest",
     "src/setupTests.ts"
   ]
