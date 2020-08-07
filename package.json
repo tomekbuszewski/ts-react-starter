@@ -5,6 +5,7 @@
   "main": "public/index.ts",
   "scripts": {
     "~~~~~~ DEV COMMANDS ~~~~~~": "",
+    "commit": "git-cz --disable-emoji",
     "clear-public": "rm -rf ./public/assets",
     "hmr": "npm run build:dev && NODE_ENV=development webpack-dev-server --hot",
     "hmr:mocks": "npm run build:dev && cross-env NODE_ENV=development MOCKS=true webpack-dev-server --hot",
@@ -87,6 +88,7 @@
     "eslint-plugin-eslint-plugin": "^2.3.0",
     "eslint-plugin-jest": "^23.20.0",
     "eslint-plugin-react": "^7.20.5",
+    "git-cz": "^4.7.0",
     "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "inquirer": "^7.3.3",
@@ -111,6 +113,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
     }
   }
 }
