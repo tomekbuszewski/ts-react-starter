@@ -40,12 +40,7 @@ const rules = (isProd) => {
     ? [
         {
           ...cfg,
-          use: {
-            loader: "@sucrase/webpack-loader",
-            options: {
-              transforms: ["typescript", "jsx"],
-            },
-          },
+          loader: "ts-loader",
         },
       ]
     : [
@@ -60,29 +55,44 @@ const rules = (isProd) => {
       ];
 };
 
-const optimization = (isProd) => ({
-  minimize: isProd,
-  nodeEnv: isProd ? "production" : "development",
-  mergeDuplicateChunks: true,
-  splitChunks: {
-    chunks: "all",
-    minSize: 30000,
-    maxSize: 0,
-    minChunks: 1,
-    maxAsyncRequests: 5,
-    maxInitialRequests: 3,
-    automaticNameDelimiter: "-",
-    name: true,
-    cacheGroups: {
-      vendor: {
+const optimization = (isProd) => {
+  const vendor = isProd
+    ? {
+        test: /[\\/]node_modules[\\/]/,
+        name(module) {
+          const packageName = module.context.match(
+            /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
+          )[1];
+
+          return `vendor.${packageName.replace("@", "")}`;
+        },
+      }
+    : {
         chunks: "initial",
         test: "vendor",
         name: "vendor",
         enforce: true,
+      };
+
+  return {
+    minimize: isProd,
+    nodeEnv: isProd ? "production" : "development",
+    mergeDuplicateChunks: true,
+    splitChunks: {
+      chunks: "all",
+      minSize: 64000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: Infinity,
+      automaticNameDelimiter: "-",
+      name: true,
+      cacheGroups: {
+        vendor,
       },
     },
-  },
-});
+  };
+};
 
 const plugins = [
   new webpack.DefinePlugin({
