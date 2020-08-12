@@ -1,7 +1,10 @@
+import loadable from "@loadable/component";
+
 import { RouteProps } from "react-router-dom";
-import { Home } from "@pages/Home";
-import { About } from "@pages/About";
-import { Users } from "@pages/Users";
+
+const Home = loadable(() => import("@pages/Home"));
+const About = loadable(() => import("@pages/About"));
+const Users = loadable(() => import("@pages/Users"));
 
 export enum ROUTES {
   HOME = "/",

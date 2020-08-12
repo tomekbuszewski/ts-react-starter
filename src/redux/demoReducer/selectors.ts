@@ -5,4 +5,7 @@ const exampleSelectorFunction = (state: Reducers) => {
   return state;
 };
 
-export const exampleSelector = createSelector(exampleSelectorFunction);
+export const exampleSelector = createSelector(
+  exampleSelectorFunction,
+  (f) => f,
+);

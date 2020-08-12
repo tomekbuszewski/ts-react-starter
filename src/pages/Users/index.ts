@@ -1,1 +1,3 @@
-export { Users } from "./Users";
+import { Users } from "./Users";
+export { Users };
+export default Users;

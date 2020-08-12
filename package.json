@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/tomekbuszewski/ts-react-starter#readme",
   "dependencies": {
+    "@loadable/component": "^5.13.1",
     "babel-plugin-remove-test-ids": "^1.1.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
@@ -72,6 +73,7 @@
     "@testing-library/jest-dom": "^5.11.2",
     "@testing-library/react": "^10.4.8",
     "@types/jest": "^26.0.9",
+    "@types/loadable__component": "^5.13.0",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",

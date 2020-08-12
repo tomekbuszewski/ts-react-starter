@@ -5,4 +5,6 @@ export const reducers = {
   demoReducer,
 };
 
+export type Reducers = typeof reducers;
+
 export default combineReducers(reducers);
