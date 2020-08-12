@@ -10,7 +10,7 @@ module.exports = {
     ...common.resolve,
   },
   module: {
-    rules: [...common.rules],
+    rules: [...common.rules(true)],
   },
   optimization: {
     ...common.optimization(true),

@@ -14,7 +14,7 @@ module.exports = {
     },
   },
   module: {
-    rules: [...common.rules],
+    rules: [...common.rules(false)],
   },
   optimization: {
     ...common.optimization(false),

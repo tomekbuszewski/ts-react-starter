@@ -30,17 +30,35 @@ const output = (isProd) => ({
   publicPath: "/assets/",
 });
 
-const rules = [
-  {
+const rules = (isProd) => {
+  const cfg = {
     test: /\.[tj]s(x?)$/,
     exclude: /node_modules/,
-    use: [
-      { loader: "babel-loader" },
-      { loader: "react-hot-loader/webpack" },
-      { loader: "react-docgen-typescript-loader" },
-    ],
-  },
-];
+  };
+
+  return isProd
+    ? [
+        {
+          ...cfg,
+          use: {
+            loader: "@sucrase/webpack-loader",
+            options: {
+              transforms: ["typescript", "jsx"],
+            },
+          },
+        },
+      ]
+    : [
+        {
+          ...cfg,
+          use: [
+            { loader: "babel-loader" },
+            { loader: "react-hot-loader/webpack" },
+            { loader: "react-docgen-typescript-loader" },
+          ],
+        },
+      ];
+};
 
 const optimization = (isProd) => ({
   minimize: isProd,
