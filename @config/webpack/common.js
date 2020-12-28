@@ -56,42 +56,33 @@ const rules = (isProd) => {
 };
 
 const optimization = (isProd) => {
-  const vendor = isProd
-    ? {
-        test: /[\\/]node_modules[\\/]/,
-        name(module) {
-          const packageName = module.context.match(
-            /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
-          )[1];
-
-          return `vendor.${packageName.replace("@", "")}`;
-        },
-      }
-    : {
-        chunks: "initial",
-        test: "vendor",
-        name: "vendor",
-        enforce: true,
-      };
-
-  return {
-    minimize: isProd,
-    nodeEnv: isProd ? "production" : "development",
-    mergeDuplicateChunks: true,
-    splitChunks: {
-      chunks: "all",
-      minSize: 64000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: Infinity,
-      automaticNameDelimiter: "-",
-      name: true,
-      cacheGroups: {
-        vendor,
-      },
-    },
+  const opts = {
+    chunks: "all",
+    minSize: 0,
+    minChunks: 1,
+    reuseExistingChunk: true,
+    enforce: true,
   };
+
+  if (isProd) {
+    return {
+      moduleIds: "named",
+      runtimeChunk: "single",
+      minimize: isProd,
+      nodeEnv: isProd ? "production" : "development",
+      splitChunks: {
+        cacheGroups: {
+          react: { test: /(react|react-dom)/, ...opts },
+          "react~3rd": {
+            test: /styled|redux|react-router|react-helmet|ky/,
+            ...opts,
+          },
+        },
+      },
+    };
+  }
+
+  return {};
 };
 
 const plugins = (isProd) => {
