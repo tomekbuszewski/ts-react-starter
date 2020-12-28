@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { HashRouter as Router } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { hot } from "react-hot-loader";
 
 import { theme } from "@ui/theme";
 import { GlobalStyle } from "@ui/GlobalStyle";
@@ -14,7 +13,7 @@ import { ErrorBoundary } from "@containers/ErrorBoundary";
 import { Routes } from "@containers/Routes";
 import { Navigation } from "@containers/Navigation";
 
-const BareApplication = () => (
+const Application = () => (
   <ErrorBoundary>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -32,4 +31,4 @@ const BareApplication = () => (
   </ErrorBoundary>
 );
 
-export const Application = hot(module)(BareApplication);
+export { Application };

@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
@@ -48,7 +49,6 @@ const rules = (isProd) => {
           ...cfg,
           use: [
             { loader: "babel-loader" },
-            { loader: "react-hot-loader/webpack" },
             { loader: "react-docgen-typescript-loader" },
           ],
         },
@@ -94,33 +94,49 @@ const optimization = (isProd) => {
   };
 };
 
-const plugins = [
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify(ENV),
-      MOCKS: JSON.stringify(MOCKS),
-    },
-  }),
+const plugins = (isProd) => {
+  const plugins = [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(ENV),
+        MOCKS: JSON.stringify(MOCKS),
+      },
+    }),
 
-  new ManifestPlugin({
-    filter: ({ isInitial }) => isInitial,
-  }),
+    new ManifestPlugin({
+      filter: ({ isInitial }) => isInitial,
+    }),
 
-  new HtmlWebpackPlugin({
-    template: path.resolve("src", "templates", "index.html"),
-    filename: path.resolve("public", "index.html"),
-    minify: true,
-    hash: true,
-    inject: "body",
-    title: "",
-  }),
+    new HtmlWebpackPlugin({
+      template: path.resolve("src", "templates", "index.html"),
+      filename: path.resolve("public", "index.html"),
+      minify: true,
+      hash: true,
+      inject: "body",
+      title: "",
+    }),
 
-  new ScriptExtHtmlWebpackPlugin({
-    defaultAttribute: "async",
-  }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: "async",
+    }),
 
-  new Dotenv(),
-];
+    new Dotenv(),
+  ];
+
+  if (isProd) {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+
+    plugins.push(
+      new ReactRefreshWebpackPlugin({
+        overlay: {
+          sockIntegration: "whm",
+        },
+      }),
+    );
+  }
+
+  return plugins;
+};
 
 module.exports = {
   entry,

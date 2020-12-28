@@ -24,5 +24,5 @@ module.exports = {
       }),
     ],
   },
-  plugins: [...common.plugins],
+  plugins: common.plugins(true),
 };

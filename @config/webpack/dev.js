@@ -10,7 +10,6 @@ module.exports = {
     ...common.resolve,
     alias: {
       ...common.resolve.alias,
-      "react-dom": "@hot-loader/react-dom",
     },
   },
   module: {
@@ -19,7 +18,7 @@ module.exports = {
   optimization: {
     ...common.optimization(false),
   },
-  plugins: [...common.plugins],
+  plugins: common.plugins(false),
   devServer: {
     contentBase: path.join(__dirname, "..", "..", "public"),
     port: process.env.HMR_PORT || "8888",
