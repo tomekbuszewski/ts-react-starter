@@ -25,7 +25,7 @@ const entry = ["./src/index.tsx"];
 
 const output = (isProd) => ({
   path: path.resolve("public", "assets"),
-  filename: isProd ? "[name].[hash].js" : "[name].js",
+  filename: isProd ? "[name].[contenthash].js" : "[name].js",
   hotUpdateChunkFilename: ".hot/[id].[hash].hot-update.js",
   hotUpdateMainFilename: ".hot/[hash].hot-update.json",
   publicPath: "/assets/",
@@ -66,8 +66,9 @@ const optimization = (isProd) => {
 
   if (isProd) {
     return {
-      moduleIds: "named",
-      runtimeChunk: "single",
+      runtimeChunk: {
+        name: ({ name }) => `runtime~${name}`,
+      },
       minimize: isProd,
       nodeEnv: isProd ? "production" : "development",
       splitChunks: {
@@ -114,16 +115,9 @@ const plugins = (isProd) => {
     new Dotenv(),
   ];
 
-  if (isProd) {
+  if (!isProd) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
-
-    plugins.push(
-      new ReactRefreshWebpackPlugin({
-        overlay: {
-          sockIntegration: "whm",
-        },
-      }),
-    );
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   return plugins;
