@@ -6,16 +6,16 @@
   "scripts": {
     "~~~~~~ DEV COMMANDS ~~~~~~": "",
     "commit": "git-cz --disable-emoji",
-    "clear-public": "rm -rf ./public/assets",
-    "hmr": "npm run build:dev && NODE_ENV=development webpack-dev-server --hot",
-    "hmr:mocks": "npm run build:dev && cross-env NODE_ENV=development MOCKS=true webpack-dev-server --hot",
+    "clear-public": "rm -rf ./dist",
+    "hmr": "npm run build:dev && NODE_ENV=development webpack serve --mode development --env development",
+    "hmr:mocks": "npm run build:dev && cross-env NODE_ENV=development MOCKS=true webpack serve --mode development --env development",
     "plop": "plop",
     "postplop": "pretty-quick",
-    "serve:prod": "npm run build:prod; http-server ./public -p 9998 --cors",
+    "serve:prod": "npm run build:prod; http-server ./dist -p 9998 --cors",
     "storybook": "start-storybook -p 9001 -c ./@config/storybook",
     "test": "jest --coverage",
     "~~~~~~ BUILD COMMANDS ~~~~~~": "",
-    "build:dev": "NODE_ENV=development webpack",
+    "build:dev": "npm run clear-public; NODE_ENV=development webpack",
     "build:prod": "npm run clear-public; NODE_ENV=production webpack --mode=production"
   },
   "repository": {
@@ -67,7 +67,6 @@
     "@storybook/addon-viewport": "^6.1.11",
     "@storybook/cli": "^6.1.11",
     "@storybook/react": "^6.1.11",
-    "@sucrase/webpack-loader": "^2.0.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^10.4.9",
     "@types/jest": "^26.0.19",
@@ -98,6 +97,7 @@
     "plop": "^2.7.4",
     "prettier": "^2.2.1",
     "pretty-quick": "^2.0.2",
+    "process": "^0.11.10",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-refresh": "^0.9.0",
     "regenerator-runtime": "^0.13.7",
@@ -106,14 +106,13 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
-    "sucrase": "^3.16.0",
     "terser-webpack-plugin": "^4.2.3",
     "ts-loader": "^8.0.12",
     "typescript": "^3.9.7",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-manifest-plugin": "^2.2.0"
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.1",
+    "webpack-manifest-plugin": "3"
   },
   "husky": {
     "hooks": {
