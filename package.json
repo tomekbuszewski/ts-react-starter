@@ -7,8 +7,8 @@
     "~~~~~~ DEV COMMANDS ~~~~~~": "",
     "commit": "git-cz --disable-emoji",
     "clear-public": "rm -rf ./dist",
-    "hmr": "npm run build:dev && NODE_ENV=development webpack serve --mode development --env development",
-    "hmr:mocks": "npm run build:dev && cross-env NODE_ENV=development MOCKS=true webpack serve --mode development --env development",
+    "hmr": "npm run build:dev && cross-env NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack serve --mode development --env development",
+    "hmr:mocks": "npm run build:dev && cross-env NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.webpack.json\" MOCKS=true webpack serve --mode development --env development",
     "plop": "plop",
     "postplop": "pretty-quick",
     "serve:prod": "npm run build:prod; http-server ./dist -p 9998 --cors",
@@ -35,6 +35,7 @@
   "homepage": "https://github.com/tomekbuszewski/ts-react-starter#readme",
   "dependencies": {
     "@loadable/component": "^5.14.1",
+    "comlink": "^4.3.0",
     "core-js": "^3.8.1",
     "ky": "^0.23.0",
     "ky-universal": "^0.8.2",
@@ -84,6 +85,7 @@
     "@typescript-eslint/parser": "^3.10.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-remove-test-ids": "^1.1.0",
+    "comlink-loader": "^2.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^6.0.0",
@@ -119,7 +121,8 @@
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.1",
-    "webpack-manifest-plugin": "3"
+    "webpack-manifest-plugin": "^3.0.0",
+    "worker-loader": "2"
   },
   "husky": {
     "hooks": {

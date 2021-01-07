@@ -44,15 +44,28 @@ const rules = (isDev = IS_DEV): webpack.RuleSetRule[] => {
   if (isDev) {
     use.unshift({
       loader: "babel-loader",
-      // @ts-ignore
-      options: { plugins: ["react-refresh/babel"] },
+      options: {
+        // @ts-ignore
+        plugins: ["react-refresh/babel"],
+      },
     });
   }
 
   return [
     {
+      test: /\.worker\.([tj]s)$/i,
+      use: [
+        {
+          loader: "comlink-loader",
+          options: {
+            singleton: true,
+          },
+        },
+      ],
+    },
+    {
       exclude: /node_modules/,
-      test: /\.tsx?$/,
+      test: /\.[tj]sx?$/,
       use,
     },
   ];

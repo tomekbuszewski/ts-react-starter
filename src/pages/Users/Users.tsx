@@ -1,5 +1,5 @@
 import * as React from "react";
-import ky from "ky-universal";
+import { fetch } from "@services/fetch.worker";
 
 import { API_URL } from "@config/config";
 import { USERS_ENDPOINT } from "@config/endpoints";
@@ -12,9 +12,9 @@ const Users: React.FunctionComponent = () => {
 
   React.useEffect(() => {
     (async () => {
-      const data = await ky(`${API_URL}/${USERS_ENDPOINT}`);
+      const data = await fetch<IUser[]>(`${API_URL}/${USERS_ENDPOINT}`);
 
-      setUsers(await data.json());
+      setUsers(data);
     })();
   }, []);
 
