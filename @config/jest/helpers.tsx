@@ -1,11 +1,13 @@
 import * as React from "react";
-import { render } from "@testing-library/react";
+
+import { render, RenderResult } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 
-import { theme } from "../../src/ui/theme";
-import { GlobalStyle } from "../../src/ui/globalStyle";
+import { GlobalStyle } from "@ui/globalStyle";
+import { theme } from "@ui/theme";
 
-const renderWithDeps = (ui: React.ReactElement) =>
+
+const renderWithDeps = (ui: React.ReactElement): RenderResult =>
   render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />

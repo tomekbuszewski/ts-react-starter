@@ -1,8 +1,10 @@
+import { Button } from "./";
+
 import * as React from "react";
 
 import { text } from "@storybook/addon-knobs";
 
-import { Button } from "./";
+
 
 export const Normal = () => <Button>{text("Example text", "Hello")}</Button>;
 export const Inverted = () => (

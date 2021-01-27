@@ -1,12 +1,14 @@
 import * as React from "react";
+
 import { render, screen, waitFor } from "@testing-library/react";
 import { setupServer } from "msw/node";
 
-import usersMock from "@mocks/users";
 import { usersSuccessHandler } from "@mocks/handlers";
+import usersMock from "@mocks/users";
+
 import { Users } from "@pages/Users";
-import { View as UsersView } from "@pages/Users/Users.view";
 import { PAGE_USERS_TESTING_IDS } from "@pages/Users/Users.typings";
+import { View as UsersView } from "@pages/Users/Users.view";
 
 const server = setupServer();
 

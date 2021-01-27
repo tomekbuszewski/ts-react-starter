@@ -1,5 +1,7 @@
-const inquirer = require("inquirer");
 const { getReducers } = require("../helpers");
+
+const inquirer = require("inquirer");
+
 
 const newReducer = {
   name: "create a new one",

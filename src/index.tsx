@@ -1,5 +1,8 @@
 import React from "react";
+
 import { render } from "react-dom";
+
+
 import { Application } from "@containers/Application";
 
 const rootId = "#app";

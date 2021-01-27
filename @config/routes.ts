@@ -1,5 +1,4 @@
 import loadable from "@loadable/component";
-
 import { RouteProps } from "react-router-dom";
 
 const Home = loadable(() => import("@pages/Home"));

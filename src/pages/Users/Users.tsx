@@ -1,11 +1,12 @@
-import * as React from "react";
-import { fetch } from "@services/fetch.worker";
+import React from "react";
 
 import { API_URL } from "@config/config";
 import { USERS_ENDPOINT } from "@config/endpoints";
 
+import { fetch } from "@services/fetch.worker";
+
+import { IUser } from "./Users.typings";
 import { View } from "./Users.view";
-import { IUser } from "@pages/Users/Users.typings";
 
 const Users: React.FunctionComponent = () => {
   const [users, setUsers] = React.useState<IUser[]>([]);

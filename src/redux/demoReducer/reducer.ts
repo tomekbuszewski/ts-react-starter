@@ -1,7 +1,7 @@
 import { ReduxAction } from "@typings";
 
-import { DemoReducerReducer } from "./typings";
 import { EXAMPLE_ACTION } from "./actions";
+import { DemoReducerReducer } from "./typings";
 
 const initialState: DemoReducerReducer = "";
 

@@ -1,3 +1,7 @@
-import { reducers } from "@redux/reducers";
+import { CombinedState } from "redux";
 
-export type Reducers = typeof reducers;
+import { DemoReducerReducer } from "@redux/demoReducer/typings";
+
+export type Reducers = CombinedState<{
+  demoReducer: DemoReducerReducer;
+}>;

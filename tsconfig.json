@@ -24,19 +24,23 @@
     }
   },
   "include": [
-    "./src/**/*",
-    "./*.js",
-    "./@config/**/*",
     "./@typings",
+    "./@config/**/*",
+    "./mocks/**/*",
+    "./scripts/*.js",
+    "./src/**/*",
     "./tests/**/*",
-    "./mocks/**/*"
+    "./*.js",
+    "./.eslintrc.js",
+    "./webpack.config.ts"
   ],
   "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
     "acceptance-tests",
+    "build",
+    "coverage",
+    "dist",
     "jest",
+    "node_modules",
     "src/setupTests.ts"
   ]
 }

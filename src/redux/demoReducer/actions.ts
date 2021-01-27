@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+
 import { ReduxAction } from "@typings";
 
 export const EXAMPLE_ACTION = "DEMO_REDUCER/EXAMPLE_ACTION";

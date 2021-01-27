@@ -1,19 +1,20 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import { HashRouter as Router } from "react-router-dom";
-import { Helmet } from "react-helmet";
 
-import { theme } from "@ui/theme";
-import { GlobalStyle } from "@ui/GlobalStyle";
-import store from "@redux/store";
+import { Helmet } from "react-helmet";
+import { Provider } from "react-redux";
+import { HashRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
 import { ErrorBoundary } from "@containers/ErrorBoundary";
-
-import { Routes } from "@containers/Routes";
 import { Navigation } from "@containers/Navigation";
+import { Routes } from "@containers/Routes";
 
-const Application = () => (
+import store from "@redux/store";
+
+import { GlobalStyle } from "@ui/GlobalStyle";
+import { theme } from "@ui/theme";
+
+const Application: React.FC = () => (
   <ErrorBoundary>
     <Provider store={store}>
       <ThemeProvider theme={theme}>

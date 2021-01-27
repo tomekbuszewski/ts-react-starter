@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { PAGE_USERS_TESTING_IDS, ViewProps } from "@pages/Users/Users.typings";
 
 const View: React.FunctionComponent<ViewProps> = ({ users }) => {

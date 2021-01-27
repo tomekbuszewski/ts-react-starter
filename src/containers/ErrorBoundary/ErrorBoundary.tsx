@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { IS_DEV } from "@config/config";
 
 import { View } from "./ErrorBoundary.view";
@@ -7,22 +8,22 @@ interface State {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<{}, State> {
+class ErrorBoundary extends React.Component<unknown, State> {
   state = {
     hasError: false,
   };
 
-  static getDerivedStateFromError() {
+  static getDerivedStateFromError(): Record<string, boolean> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     if (IS_DEV) {
       console.error(error, errorInfo);
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.state.hasError) {
       return <View />;
     }

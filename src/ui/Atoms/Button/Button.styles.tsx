@@ -4,6 +4,7 @@
  */
 
 import styled, { css } from "styled-components";
+
 import { BaseProps as Props } from "./Button.types";
 
 const StyledButton = styled.button<Props>`

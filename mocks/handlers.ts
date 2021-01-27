@@ -1,8 +1,9 @@
 import { rest } from "msw";
-import users from "./users";
 
 import { API_URL } from "@config/config";
 import { USERS_ENDPOINT } from "@config/endpoints";
+
+import users from "./users";
 
 const usersSuccessHandler = rest.get(
   `${API_URL}/${USERS_ENDPOINT}`,

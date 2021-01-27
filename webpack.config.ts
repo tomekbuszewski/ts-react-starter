@@ -1,12 +1,14 @@
-import { config } from "dotenv";
+/* eslint-disable */
 import path from "path";
+
+import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { config } from "dotenv";
+import Dotenv from "dotenv-webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import ScriptExtHtmlWebpackPlugin from "script-ext-html-webpack-plugin";
 import * as webpack from "webpack";
 import { Configuration as DevServer } from "webpack-dev-server";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import ScriptExtHtmlWebpackPlugin from "script-ext-html-webpack-plugin";
 import { WebpackManifestPlugin } from "webpack-manifest-plugin";
-import Dotenv from "dotenv-webpack";
 
 import moduleResolution from "./@config/moduleAlias";
 
@@ -123,6 +125,7 @@ const dev: Configuration = {
   plugins: plugins(true),
   devServer: {
     hot: true,
+    disableHostCheck: true,
     port: Number(process.env.HMR_PORT || "8888"),
   },
 };
